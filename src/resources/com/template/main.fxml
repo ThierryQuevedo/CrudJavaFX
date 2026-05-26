@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane pickOnBounds="false" prefHeight="522.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.template.MainController">
+   <children>
+      <Pane prefHeight="522.0" prefWidth="600.0" style="-fx-background-color: #30b7ff;">
+         <children>
+            <ImageView fitHeight="522.0" fitWidth="600.0" pickOnBounds="true">
+               <image>
+                  <Image url="@/Users/mac407/IdeaProjects/CrudDesenhos/src/resources/Images/cartoon-network_jdxp.jpg" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="-0.69" contrast="1.0" saturation="1.0" />
+               </effect>
+            </ImageView>
+            <Button fx:id="btnSalvar" layoutX="346.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnSalvarAction" prefHeight="0.0" prefWidth="212.0" style="-fx-background-color: #000000;" text="Salvar" textAlignment="RIGHT" textFill="#00ff09" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="Comic Sans MS" size="30.0" />
+               </font>
+               <effect>
+                  <DropShadow spread="0.49">
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+            <TableView fx:id="tblDesenho" layoutX="81.0" layoutY="270.0" prefHeight="200.0" prefWidth="439.0" style="-fx-background-color: #db9cff;">
+              <columns>
+                <TableColumn fx:id="colId" editable="false" prefWidth="53.0" style="-fx-color: #000000;" text="ID" />
+                <TableColumn fx:id="colNome" editable="false" prefWidth="97.0" text="Nome" />
+                  <TableColumn fx:id="colAnoLancamento" editable="false" prefWidth="120.0" text="Ano de lançamento" />
+                  <TableColumn fx:id="colProtagonista" editable="false" prefWidth="104.0" text="Protagonista(as)" />
+                  <TableColumn fx:id="colCriador" editable="false" prefWidth="62.0" text="Criador" />
+              </columns>
+            </TableView>
+            <Button fx:id="btnEditar" layoutX="81.0" layoutY="482.0" mnemonicParsing="false" onAction="#btnEditarAction" style="-fx-background-color: #538079;" text="Editar">
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.02416534163057804" blue="0.949999988079071" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+               <effect>
+                  <Glow level="1.0" />
+               </effect>
+            </Button>
+            <Button fx:id="btnDeletar" layoutX="468.0" layoutY="482.0" mnemonicParsing="false" onAction="#btnDeletarAction" style="-fx-background-color: #ab0b00;" text="Deletar">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color green="0.030524643138051033" blue="0.9599999785423279" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.06666667014360428" green="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <effect>
+                  <Glow level="1.0" />
+               </effect>
+            </Button>
+            <Label layoutX="77.0" layoutY="14.0" style="-fx-background-color: #ffffff;" text="  Cadastro de DESENHOS  " textAlignment="CENTER" textFill="#c60680">
+               <font>
+                  <Font name="Oriya MN" size="36.0" />
+               </font>
+            </Label>
+            <GridPane layoutX="79.0" layoutY="68.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleX="1.4" style="-fx-background-color: #5b75b0; -fx-padding: 5;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.42857360839844" minWidth="10.0" prefWidth="108.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="92.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="29.0" minHeight="0.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="txtId" editable="false" GridPane.columnIndex="1" />
+                  <Label text="ID" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtNome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Nome" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtAnoLancamento" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Ano de lançamento" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtProtagonista" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Protagonista" textFill="WHITE" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label text="Criador" textFill="WHITE" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtCriador" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+               </children>
+               <effect>
+                  <BoxBlur height="2.0" width="0.0" />
+               </effect>
+            </GridPane>
+            <Button fx:id="btnLimpar" layoutX="346.0" layoutY="152.0" mnemonicParsing="false" onAction="#btnLimparActon" prefHeight="0.0" prefWidth="212.0" style="-fx-background-color: #b45eff;" text="Limpar" textAlignment="RIGHT" textFill="#00ff09" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="Comic Sans MS" size="30.0" />
+               </font>
+               <effect>
+                  <DropShadow spread="0.49">
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
