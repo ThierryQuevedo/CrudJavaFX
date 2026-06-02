@@ -24,7 +24,7 @@ public class DesenhoDAO {
                 DesenhoDTO desenho = new DesenhoDTO();
                 desenho.setId(resultado.getInt("id"));
                 desenho.setNome(resultado.getString("nome"));
-                desenho.setAnoLancamento(resultado.getInt("anoLancamento"));
+                desenho.setAnoLancamento(resultado.getInt("ano_lancamento"));
                 desenho.setProtagonista(resultado.getString("protagonista"));
                 desenho.setCriador(resultado.getString("criador"));
                 ListaDesenhos.add(desenho);
