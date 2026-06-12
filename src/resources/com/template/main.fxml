@@ -22,7 +22,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane pickOnBounds="false" prefHeight="522.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.template.MainController">
+<AnchorPane pickOnBounds="false" prefHeight="522.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.template.MainController">
    <children>
       <Pane prefHeight="522.0" prefWidth="600.0" style="-fx-background-color: #30b7ff;">
          <children>
@@ -55,7 +55,7 @@
                   <TableColumn fx:id="colCriador" editable="false" prefWidth="62.0" text="Criador" />
               </columns>
             </TableView>
-            <Button fx:id="btnAtualizar" layoutX="81.0" layoutY="477.0" mnemonicParsing="false" onAction="#btnAtualizarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #538079;" text="Atualizar">
+            <Button fx:id="btnAtualizar" disable="true" layoutX="81.0" layoutY="477.0" mnemonicParsing="false" onAction="#btnAtualizarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #538079;" text="Atualizar">
                <textFill>
                   <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                      <stops>
@@ -76,7 +76,7 @@
                   <Glow level="1.0" />
                </effect>
             </Button>
-            <Button fx:id="btnDeletar" layoutX="409.0" layoutY="477.0" mnemonicParsing="false" onAction="#btnDeletarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #ab0b00;" text="Deletar">
+            <Button fx:id="btnDeletar" disable="true" layoutX="409.0" layoutY="477.0" mnemonicParsing="false" onAction="#btnDeletarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #ab0b00;" text="Deletar">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>

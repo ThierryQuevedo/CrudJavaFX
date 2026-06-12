@@ -22,13 +22,28 @@ public class MainController {
     @FXML private TextField txtAnoLancamento;
     @FXML private TextField txtProtagonista;
     @FXML private TextField txtCriador;
-
     @FXML private TableView<DesenhoDTO> tblDesenho;
     @FXML private TableColumn<DesenhoDTO, Integer> colId;
     @FXML private TableColumn<DesenhoDTO, String> colNome;
-    @FXML private TableColumn<DesenhoDTO, Integer> colAnoLancamento; // Alterado para Integer para bater com o DTO
+    @FXML private TableColumn<DesenhoDTO, Integer> colAnoLancamento;
     @FXML private TableColumn<DesenhoDTO, String> colProtagonista;
     @FXML private TableColumn<DesenhoDTO, String> colCriador;
+
+    @FXML
+    private void initialize() {
+
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        colAnoLancamento.setCellValueFactory(new PropertyValueFactory<>("anoLancamento"));
+        colProtagonista.setCellValueFactory(new PropertyValueFactory<>("protagonista"));
+        colCriador.setCellValueFactory(new PropertyValueFactory<>("criador"));
+
+
+        btnAtualizar.disableProperty().bind(tblDesenho.getSelectionModel().selectedItemProperty().isNull());
+        btnDeletar.disableProperty().bind(tblDesenho.getSelectionModel().selectedItemProperty().isNull());
+
+        carregarDesenhos();
+    }
 
     @FXML
     private void carregarDesenhos() {
@@ -39,9 +54,7 @@ public class MainController {
 
     @FXML
     private void btnSalvarAction(ActionEvent event) {
-        // Validação básica: Não permite salvar sem nome
         if (txtNome.getText().trim().isEmpty()) {
-            System.out.println("O nome do desenho é obrigatório.");
             return;
         }
 
@@ -49,16 +62,16 @@ public class MainController {
         String protagonista = txtProtagonista.getText();
         String criador = txtCriador.getText();
 
-        // Trata o ano de lançamento para evitar o erro NumberFormatException se estiver vazio
         int anoLancamento = 0;
         if (!txtAnoLancamento.getText().trim().isEmpty()) {
             try {
                 anoLancamento = Integer.parseInt(txtAnoLancamento.getText().trim());
             } catch (NumberFormatException e) {
-                System.out.println("Ano de lançamento inválido. Digite apenas números.");
                 return;
             }
         }
+
+
 
         DesenhoDTO objdesenhodto = new DesenhoDTO();
         objdesenhodto.setNome(nome);
@@ -80,6 +93,7 @@ public class MainController {
         txtAnoLancamento.clear();
         txtProtagonista.clear();
         txtCriador.clear();
+        tblDesenho.getSelectionModel().clearSelection();
     }
 
     @FXML
@@ -87,7 +101,6 @@ public class MainController {
         DesenhoDTO desenhodto = tblDesenho.getSelectionModel().getSelectedItem();
 
         if (desenhodto != null) {
-            // Garante que estamos passando o ID correto que veio da tela/banco
             try {
                 desenhodto.setId(Integer.parseInt(txtId.getText()));
                 desenhodto.setNome(txtNome.getText());
@@ -104,10 +117,7 @@ public class MainController {
                 carregarDesenhos();
                 btnLimparAction(null);
             } catch (NumberFormatException e) {
-                System.out.println("Erro ao converter dados numéricos para a edição.");
             }
-        } else {
-            System.out.println("Selecione um desenho na tabela para editar.");
         }
     }
 
@@ -121,22 +131,7 @@ public class MainController {
 
             carregarDesenhos();
             btnLimparAction(null);
-        } else {
-            System.out.println("Selecione um desenho na tabela para deletar.");
         }
-    }
-
-    @FXML
-    private void initialize() {
-        // Vincula as colunas da TableView com os atributos declarados na sua classe DesenhoDTO
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        colAnoLancamento.setCellValueFactory(new PropertyValueFactory<>("anoLancamento"));
-        colProtagonista.setCellValueFactory(new PropertyValueFactory<>("protagonista"));
-        colCriador.setCellValueFactory(new PropertyValueFactory<>("criador"));
-
-        carregarDesenhos();
-        System.out.println("FXML loaded successfully!");
     }
 
     @FXML
