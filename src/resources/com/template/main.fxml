@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.BoxBlur?>
-<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
@@ -22,19 +21,19 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane pickOnBounds="false" prefHeight="522.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.template.MainController">
+<AnchorPane pickOnBounds="false" prefHeight="656.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.template.MainController">
    <children>
-      <Pane prefHeight="522.0" prefWidth="600.0" style="-fx-background-color: #30b7ff;">
+      <Pane prefHeight="656.0" prefWidth="942.0" style="-fx-background-color: #30b7ff;">
          <children>
-            <ImageView fitHeight="522.0" fitWidth="600.0" pickOnBounds="true">
+            <ImageView fitHeight="656.0" fitWidth="942.0" opacity="0.81" pickOnBounds="true">
                <image>
                   <Image url="@../../Images/cartoon-network_jdxp.jpg" />
                </image>
                <effect>
-                  <ColorAdjust brightness="-0.69" contrast="1.0" saturation="1.0" />
+                  <BoxBlur iterations="2" width="2.62" />
                </effect>
             </ImageView>
-            <Button fx:id="btnSalvar" layoutX="390.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnSalvarAction" prefHeight="62.0" prefWidth="168.0" style="-fx-background-color: #000000;" text="Salvar" textAlignment="RIGHT" textFill="#00ff09" textOverrun="CENTER_ELLIPSIS">
+            <Button fx:id="btnSalvar" layoutX="654.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnSalvarAction" prefHeight="62.0" prefWidth="168.0" style="-fx-background-color: #000000;" text="Salvar" textAlignment="RIGHT" textFill="#00ff09" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="Comic Sans MS" size="30.0" />
                </font>
@@ -46,7 +45,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <TableView fx:id="tblDesenho" layoutX="81.0" layoutY="270.0" onMouseClicked="#carregarCampos" prefHeight="200.0" prefWidth="439.0" style="-fx-background-color: #db9cff;">
+            <TableView fx:id="tblDesenho" layoutX="160.0" layoutY="269.0" onMouseClicked="#carregarCampos" prefHeight="292.0" prefWidth="604.0" style="-fx-background-color: #db9cff;">
               <columns>
                 <TableColumn fx:id="colId" editable="false" prefWidth="53.0" style="-fx-color: #ffffff;" text="ID" />
                 <TableColumn fx:id="colNome" editable="false" prefWidth="97.0" text="Nome" />
@@ -55,7 +54,7 @@
                   <TableColumn fx:id="colCriador" editable="false" prefWidth="62.0" text="Criador" />
               </columns>
             </TableView>
-            <Button fx:id="btnAtualizar" disable="true" layoutX="81.0" layoutY="477.0" mnemonicParsing="false" onAction="#btnAtualizarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #538079;" text="Atualizar">
+            <Button fx:id="btnAtualizar" disable="true" layoutX="160.0" layoutY="579.0" mnemonicParsing="false" onAction="#btnAtualizarAction" prefHeight="63.0" prefWidth="151.0" style="-fx-background-color: #538079;" text="Atualizar">
                <textFill>
                   <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                      <stops>
@@ -76,7 +75,7 @@
                   <Glow level="1.0" />
                </effect>
             </Button>
-            <Button fx:id="btnDeletar" disable="true" layoutX="409.0" layoutY="477.0" mnemonicParsing="false" onAction="#btnDeletarAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #ab0b00;" text="Deletar">
+            <Button fx:id="btnDeletar" disable="true" layoutX="613.0" layoutY="584.0" mnemonicParsing="false" onAction="#btnDeletarAction" prefHeight="53.0" prefWidth="151.0" style="-fx-background-color: #ab0b00;" text="Deletar">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -97,12 +96,12 @@
                   <Glow level="1.0" />
                </effect>
             </Button>
-            <Label layoutX="77.0" layoutY="14.0" style="-fx-background-color: #ffffff;" text="  Cadastro de DESENHOS  " textAlignment="CENTER" textFill="#c60680">
+            <Label layoutX="252.0" style="-fx-background-color: #ffffff;" text="  Cadastro de DESENHOS  " textAlignment="CENTER" textFill="#c60680">
                <font>
                   <Font name="Oriya MN" size="36.0" />
                </font>
             </Label>
-            <GridPane layoutX="79.0" layoutY="68.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleX="1.4" style="-fx-background-color: #5b75b0; -fx-padding: 5;">
+            <GridPane layoutX="306.0" layoutY="68.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleX="1.4" style="-fx-background-color: #5b75b0; -fx-padding: 5;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.42857360839844" minWidth="10.0" prefWidth="108.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="120.0" />
@@ -150,7 +149,7 @@
                   <BoxBlur height="2.0" width="0.0" />
                </effect>
             </GridPane>
-            <Button fx:id="btnLimpar" layoutX="390.0" layoutY="152.0" mnemonicParsing="false" onAction="#btnLimparAction" prefHeight="62.0" prefWidth="168.0" style="-fx-background-color: #b45eff;" text="Limpar" textAlignment="RIGHT" textFill="#00ff09" textOverrun="CENTER_ELLIPSIS">
+            <Button fx:id="btnLimpar" layoutX="654.0" layoutY="148.0" mnemonicParsing="false" onAction="#btnLimparAction" prefHeight="62.0" prefWidth="168.0" style="-fx-background-color: #b45eff;" text="Limpar" textAlignment="RIGHT" textFill="#00ff09" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="Comic Sans MS" size="30.0" />
                </font>
