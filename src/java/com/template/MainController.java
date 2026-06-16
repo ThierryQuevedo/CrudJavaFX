@@ -1,6 +1,7 @@
 package com.template;
 
 import javafx.collections.FXCollections;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
 
@@ -42,6 +44,45 @@ public class MainController {
         btnAtualizar.disableProperty().bind(tblDesenho.getSelectionModel().selectedItemProperty().isNull());
         btnDeletar.disableProperty().bind(tblDesenho.getSelectionModel().selectedItemProperty().isNull());
 
+        txtAnoLancamento.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                txtAnoLancamento.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+
+        tblDesenho.setStyle("-fx-selection-bar: #0078D7; -fx-selection-bar-non-focused: #E5E5E5;");
+
+        txtId.setFocusTraversable(false);
+        tblDesenho.setFocusTraversable(false);
+
+        txtNome.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.TAB) {
+                txtAnoLancamento.requestFocus();
+                event.consume();
+            }
+        });
+
+        txtAnoLancamento.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.TAB) {
+                txtProtagonista.requestFocus();
+                event.consume();
+            }
+        });
+
+        txtProtagonista.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.TAB) {
+                txtCriador.requestFocus();
+                event.consume();
+            }
+        });
+
+        txtCriador.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.TAB) {
+                btnSalvar.requestFocus();
+                event.consume();
+            }
+        });
+
         carregarDesenhos();
     }
 
@@ -49,7 +90,10 @@ public class MainController {
     private void carregarDesenhos() {
         DesenhoDAO objDesenhoDAO = new DesenhoDAO();
         ArrayList<DesenhoDTO> listaDesenhos = objDesenhoDAO.selecionarDesenho();
-        tblDesenho.setItems(FXCollections.observableArrayList(listaDesenhos));
+        SortedList<DesenhoDTO> listaOrdenavel = new SortedList<>(FXCollections.observableArrayList(listaDesenhos));
+        listaOrdenavel.comparatorProperty().bind(tblDesenho.comparatorProperty());
+
+        tblDesenho.setItems(listaOrdenavel);
     }
 
     @FXML
@@ -94,6 +138,8 @@ public class MainController {
         txtProtagonista.clear();
         txtCriador.clear();
         tblDesenho.getSelectionModel().clearSelection();
+
+        txtNome.requestFocus();
     }
 
     @FXML

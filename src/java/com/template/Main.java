@@ -11,7 +11,7 @@ public class Main extends Application
     public void start(Stage stage) throws Exception
     {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("main.fxml"));
-        Scene scene = new Scene(loader.load(),600,522);
+        Scene scene = new Scene(loader.load(),942,656);
 
         stage.setTitle("Java Balcanico");
         stage.setResizable(false);
